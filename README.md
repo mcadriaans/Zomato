@@ -9,7 +9,13 @@
 This repository contains a comprehensive analysis of the Zomato restaurant dataset. The goal of this project is to explore the dataset to uncover insights into restaurant trends, customer preferences, and business opportunities.
 
 <b>This repository includes</b>:
+
+1. Zomato EDA (Python)
+   **Data Source** : Kaggle : https://www.kaggle.com/datasets/shrutimehta/zomato-restaurants-data
+   * Country-Code.xlsx 
+   * zomato.csv
+     
+   **Project Outline**
 * Data cleaning and preprocessing: Steps taken to clean and prepare the data for analysis.
 * Exploratory data analysis (EDA): Visualizations and statistical analyses to explore the dataset and identify patterns.
-* Machine learning models: Implementation of machine learning models to predict restaurant popularity or customer preferences.
 * Findings and insights: A summary of the key findings and insights derived from the analysis.
