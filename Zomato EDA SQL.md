@@ -528,6 +528,8 @@ FROM orders
 GROUP BY 1, 2
 ORDER BY 2;
 ```
+![image](https://github.com/user-attachments/assets/c1c01894-6f6f-4cc3-8e93-26654b3b38cb)
+
 ### 20. Rank each City based on their total revenue for 2023
 ```sql
 SELECT
@@ -541,3 +543,4 @@ JOIN restaurants AS r USING (restaurant_id)
 WHERE EXTRACT(Year FROM o.order_date) = '2023'
 GROUP BY 1;
 ```
+![image](https://github.com/user-attachments/assets/6490328c-9d72-45f5-b1af-5692cb8aa18f)
