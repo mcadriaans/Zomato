@@ -69,7 +69,48 @@ CREATE TABLE deliveries(
 );
 ```
 
-
 ## Data Import
 
 ## Data Cleaning and Handling Null Values
+### Check for Null values
+Missing Values can impact the results of the Queries
+```sql
+SELECT 
+	COUNT(*)
+FROM customers
+WHERE reg_date IS NULL 
+	OR customer_name IS NULL;
+```
+```sql
+SELECT 
+	COUNT(*)
+FROM restaurants
+WHERE restaurant_name IS NULL 
+	OR city IS NULL
+	OR opening_hours IS NULL;
+```
+```sql
+SELECT 
+	COUNT(*)
+FROM orders
+WHERE order_item IS NULL 
+	OR order_date IS NULL
+	OR order_time IS NULL
+	OR order_status IS NULL
+	OR total_amount IS NULL;
+```
+```sql
+SELECT 
+	 COUNT(*)
+FROM riders
+WHERE rider_name IS NULL 
+	OR sign_up IS NULL;
+```
+```sql
+SELECT *
+FROM deliveries
+WHERE delivery_status IS NULL 
+	OR delivery_time IS NULL;
+```
+:round_pushpin: There are 797 missing delivery time values out of 9750 records (approx 8%) :Delivery time is NULL when order has not been delivered or when order has just been placed. We do not have to handle these missing values as they contribute to the data.
+
