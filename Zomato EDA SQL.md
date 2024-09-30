@@ -136,6 +136,8 @@ FROM (
 	) AS t1
 	WHERE rnk <= 5;
 ```
+![image](https://github.com/user-attachments/assets/b49362f1-d215-4381-8730-a2cdc63da944)
+
 ### 2. Popular Time slots : Identify the time slots during which the most orders are placed. Time slots are defined by  2-hour intervals
 ```sql
 SELECT 
@@ -159,6 +161,8 @@ FROM orders
 GROUP BY 1
 ORDER BY 2 DESC;
 ```
+![image](https://github.com/user-attachments/assets/126fe457-7f0a-4f1b-8fd4-d1687b8bae7f)
+
 ### 3. Order value Analysis :Find the average order value per customer who has placed more than 750 orders. 
 Return customer_name, and aov (average order value)
 ```sql
@@ -172,6 +176,8 @@ GROUP BY 1
 HAVING COUNT(*) > 750
 ORDER BY 2 DESC;
 ```
+![image](https://github.com/user-attachments/assets/dba6eca5-07fa-4408-a5d1-6f6b3e0b6886)
+
 ### 4. High Value Customers : List the customers who have spent more than 100k in total on food orders.
 Return customer_name and customer_id.
 ```sql
@@ -185,6 +191,8 @@ GROUP BY 1, 2
 HAVING SUM(o.total_amount) > 100000.00
 ORDER BY 2 ASC;
 ```
+![image](https://github.com/user-attachments/assets/dc712d94-c81d-42ec-bf06-c1dbf9681037)
+
 ### 5. Orders without Delivery : Find the restaurants which had orders placed but not delivered.
 Return each restaurant name, city and number of not delivered orders.
 ```sql
@@ -201,6 +209,8 @@ WHERE delivery_id IS NULL
 GROUP BY 1, 2
 ORDER BY 3 DESC;
 ```
+![image](https://github.com/user-attachments/assets/f831ca27-51fc-4580-9c9f-f618c6de8729)
+
 ### 6. Restaurant Revenue Ranking : Which restaurants in each city generated the highest total revenue within the last year?
 * Rank restaurants by their Total revenue from the last year.
 * Return the best ranked restaurant name, city and total revenue for each city.
@@ -226,6 +236,8 @@ SELECT
 FROM restaurants_ranked
 WHERE city_rank = 1;
 ```
+![image](https://github.com/user-attachments/assets/414d9bbd-cc82-40e9-8c97-8ed300a78406)
+
 ### 7. Most Popular Dish by City : What is the most popular dish in each city based on the number of orders?
 ```sql
 WITH dish_cty_ranks AS(
@@ -248,6 +260,8 @@ SELECT
 FROM dish_cty_ranks
 WHERE rnk = 1;
 ```
+![image](https://github.com/user-attachments/assets/73cc2672-9e31-4d1d-a5a4-5dfb00c12cc2)
+
 ### 8. Customer Churn: Find the customers who have not placed an order in 2024 but did in 2023.
 * Return customer_id and customer_name
 
@@ -266,6 +280,7 @@ WHERE EXTRACT(Year from o.order_date) = 2023
 		WHERE EXTRACT(Year from order_date) = 2024
 );
 ```
+![image](https://github.com/user-attachments/assets/858797bc-bf83-4648-a396-25a6a02ea34e)
 
 ### 9. Cancelation Rate Comparison : Calculate and compare the order cancellation rate for each restaurant for the past year.
 * Return restaurant_name, restaurant_id , total number of orders, total number of cancellations and the cancellation rate.
@@ -306,6 +321,8 @@ JOIN previous_year_cancellations AS p
 JOIN restaurants AS r
 	ON c.restaurant_id = r.restaurant_id;
 ```
+![image](https://github.com/user-attachments/assets/4a47ffd3-a668-49b4-bf62-05227bda1287)
+
 ### 10. Rider Average Delivery Time: Determine the average time it takes each rider to deliver an order.
 * Return the rider_id, rider_name and their average delivery time.
 ```sql
@@ -322,6 +339,8 @@ WHERE d.delivery_status = 'Delivered'
 GROUP BY 1, 2
 ORDER BY 1;
 ```
+![image](https://github.com/user-attachments/assets/7862ab89-5b54-4008-9400-751d6e3897ea)
+
 ### 11. Monthly Restaurant Growth Rate: Calculate each restaurant's growth rate based on the total number of delivered orders since its joining.
 ```sql
 WITH restaurant_monthly_orders AS(
@@ -359,6 +378,8 @@ FROM restaurant_performance_over_time AS r1
 JOIN restaurants AS r2
 	ON r1.restaurant_id = r2.restaurant_id;
 ```
+![image](https://github.com/user-attachments/assets/872a937d-d177-4db4-8ebd-6eb28bf78c2d)
+
 ### 12. Customer Segmentation: Segment customers into 'Gold' or 'Silver' groups based on their total spending compared to the average order value (AOV). 
 * If a customer's total spending exceeds the AOV, label them as 'Gold'; otherwise label them as 'Silver'.
 * Write a SQL query to determine each segment's total number of orders and total revenue.
@@ -386,6 +407,8 @@ JOIN orders AS o
 	ON s.customer_id = o.customer_id
 GROUP BY 1;
 ```
+![image](https://github.com/user-attachments/assets/34ac4654-0c3c-4eb8-849c-462bdcf692f2)
+
 ### 13. Rider Monthly Earnings : Calculate each rider's total monthly earnings,assuming they earn 8% of the order amount.
 ```sql
 SELECT 
@@ -403,6 +426,8 @@ WHERE d.delivery_status = 'Delivered'
 GROUP BY 1, 2, 3
 ORDER BY 1, 3;
 ```
+![image](https://github.com/user-attachments/assets/4b042875-d894-49cc-b3dd-5df8e39d76c5)
+
 ### 14. Rider Ratings Analysis:  Find the number of 5-star, 4-star and 3-star  ratings each rider has. Riders receive these ratings based on delivery time.
 * If order is  delivered less than 15 min of order received time : 5-star
 * If order is  delivered between 15 and 20 min of order received time: 4-star
@@ -439,6 +464,8 @@ FROM rider_ratings
 GROUP BY 1, 2
 ORDER BY 1;
 ```
+![image](https://github.com/user-attachments/assets/cc5e1711-b079-40e7-b4d5-bfcfe321c1d8)
+
 ### 15. Order Frequency by Day: Analyze order frequency per day of the week and identify the peak day for each restaurant.
 ```sql
 SELECT 
@@ -463,6 +490,8 @@ FROM (
 	ORDER BY 1, 5) AS t1
 WHERE rnk = 1;
 ```
+![image](https://github.com/user-attachments/assets/12bf61e5-c66f-48b9-b8c3-d00b462b2cc3)
+
 ### 16. Customer Lifetime Value (CLV): Calculate the Total Revenue generated by each customer over all their orders.
 ```sql
 SELECT
@@ -475,6 +504,8 @@ JOIN customers AS c
 GROUP BY 1, 2
 ORDER BY 1;
 ```
+![image](https://github.com/user-attachments/assets/14072031-a88e-456c-8025-e7a571c8f21f)
+
 ### 17. Monthly Sales Trends : Identify sales trends by comparing each months total sales by the previous month.
 ```sql
 WITH monthly_sales AS (
@@ -492,6 +523,8 @@ SELECT
 	ROUND((current_month_sales - previous_month_sales )/ previous_month_sales * 100 ,2) AS sales_growth_rate
 FROM monthly_sales;
 ```
+![image](https://github.com/user-attachments/assets/b3cb41ba-ab06-4b54-822c-d65ca2b14a78)
+
 ### 18. Rider Efficiency : Evaluate the rider efficiency by determining the average delivery times and identifying those riders with the highest and lowest average.
 ```sql
 WITH rider_delivery_times AS(
@@ -514,6 +547,8 @@ UNION
 FROM rider_delivery_times
 WHERE avg_delivery = (SELECT MIN(avg_delivery) FROM rider_delivery_times));
 ```
+![image](https://github.com/user-attachments/assets/5f1198dc-57e0-4a8d-833e-6e3cb6eecfb6)
+
 ### 19. Order Item Popularity: Track the popularity of specific order items over time and identify seasonal demand spikes.
 ```sql
 SELECT 
