@@ -5,13 +5,11 @@
 ![image](https://github.com/user-attachments/assets/88febbf9-5880-418a-9a7e-70e3338edc6e)
 
 
-## Description :pizza:
+## 1. Zomato EDA Python :pizza:
 This repository contains a comprehensive analysis of the Zomato restaurant dataset. The goal of this project is to explore the dataset to uncover insights into restaurant trends, customer preferences, and business opportunities.
 
-<b>This repository includes</b>:
+<b>This project includes</b>
 
-1. Zomato EDA (Python)
-   
    **Data Source** : Kaggle : https://www.kaggle.com/datasets/shrutimehta/zomato-restaurants-data
    * Country-Code.xlsx 
    * zomato.csv
@@ -21,12 +19,12 @@ This repository contains a comprehensive analysis of the Zomato restaurant datas
 * Exploratory data analysis (EDA): Visualizations and statistical analyses to explore the dataset and identify patterns.
 * Findings and insights: A summary of the key findings and insights derived from the analysis.
 
-2. Zomato EDA (SQL)
+## 2. Zomato EDA SQL :curry:
    
    **ERD**:
 ![image](https://github.com/user-attachments/assets/567137e8-29d3-4340-9bce-e5b8e9dace0f)
 
-This repository contains SQL queries to analyze data from a Zomato-like food delivery platform. These queries explore various aspects of the platform, including customer behavior, restaurant performance, rider efficiency, and overall sales trends.
+This project contains SQL queries to analyze data from a Zomato-like food delivery platform. These queries explore various aspects of the platform, including customer behavior, restaurant performance, rider efficiency, and overall sales trends.
 
 **Database Structure**:
 
@@ -42,9 +40,7 @@ The provided schema includes tables for:
 
 The repository includes comments suggesting queries to check for null values in each table. This helps identify missing data that may affect the analysis.
 
-
-
-**EDA through Advanced Queries** -:
+**EDA through Advanced Queries** :
 
 
 * Customer Specific Information: Analyze most frequently ordered dishes by a specific customer within a specific timeframe.
