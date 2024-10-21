@@ -1,4 +1,4 @@
-# Zomato EDA Python 🍜🥡🥢🍽️
+# Zomato Restaurant Data Analysis_Python 🍜🥡🥢🍽️
 
 ![image](https://github.com/user-attachments/assets/07e2b3ea-3dcb-4089-a045-6732e1ad5c17)
 
