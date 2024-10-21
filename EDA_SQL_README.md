@@ -1,13 +1,10 @@
-# Zomato Restaurant Data Analysis
+# Zomato Restaurant Data Analysis_SQL 🍛 🥟
 
 
 
 ![image](https://github.com/user-attachments/assets/88febbf9-5880-418a-9a7e-70e3338edc6e)
 
 
-
-
-## 2. Zomato EDA SQL :curry:
    
    **ERD**:
 ![image](https://github.com/user-attachments/assets/567137e8-29d3-4340-9bce-e5b8e9dace0f)
@@ -24,7 +21,7 @@ The provided schema includes tables for:
 * Orders: Stores order information like ID, customer ID, restaurant ID, order items, order date and time, order status, and total amount.
 * Deliveries: Stores delivery information like ID, order ID, delivery status, delivery time, and rider ID.
 
-**Data Cleaning**:
+**Data Cleaning**: 🧹
 
 The repository includes comments suggesting queries to check for null values in each table. This helps identify missing data that may affect the analysis.
 
