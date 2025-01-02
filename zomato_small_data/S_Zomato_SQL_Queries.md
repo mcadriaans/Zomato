@@ -94,12 +94,22 @@ FROM(
 ![image](https://github.com/user-attachments/assets/87945ff7-bf5d-4498-909c-911f6816c807)
 
 
-## 5. Calculate the average cost for two in each price range.
+## 5. Calculate the average cost for two in each price range for the United States.
 ```sql
 SELECT 
-  price_range,
-  ROUND(AVG(average_cost_for_two), 2) AS avg_cost_for_two
+  CASE 
+    WHEN price_range = 1 THEN '(1) Budget-Friendly'
+    WHEN price_range = 2 THEN '(2) Mid-range'
+    WHEN price_range = 3 THEN '(3) Upscale'
+		ELSE '(4) Fine Dining'
+    END AS price_range_decription,
+    ROUND(AVG(average_cost_for_two), 2) AS avg_cost_for_two_usd
 FROM zomato
+WHERE country = 'United States'
 GROUP BY 1
 ORDER BY 1;
 ```
+![image](https://github.com/user-attachments/assets/edfb4f4e-5bce-4df2-a484-5ce1ed122e19)
+
+
+
