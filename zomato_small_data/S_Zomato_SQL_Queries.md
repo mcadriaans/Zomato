@@ -31,6 +31,8 @@ CREATE TABLE zomato (
 );
 ```
 # Business Queries
+
+# Easy
 ## 1. Total registered restaurants in the data
 ```sql
 SELECT
@@ -40,7 +42,8 @@ FROM zomato;
 ![image](https://github.com/user-attachments/assets/698c8277-5aab-4347-9352-4f2b3d25be20)
 
 
-## 2. Which five countries boast the highest number of restaurants listed in the Zomato database?
+## 2. Which five countries boast the highest number of restaurants listed in the data?
+*Pinpoints the top restaurant locations by country.*
 ```sql
 SELECT
   country,
@@ -53,29 +56,10 @@ LIMIT 5;
 ![image](https://github.com/user-attachments/assets/b899c2bd-8986-489d-9896-fe37260e4363)
 
 
-## 3. Which city in each country has the highest number of restaurants listed in the Zomato database?
-```sql
-SELECT 
-  country,
-  city,
-  total_restaurants
-FROM (
-  SELECT
-    country,
-    city,
-    COUNT(*) AS total_restaurants,
-    RANK()OVER(
-               PARTITION BY country
-               ORDER BY COUNT(*) DESC
-		) AS rnk
-  FROM zomato
-  GROUP BY 1, 2)
-WHERE rnk = 1;
-```
-![image](https://github.com/user-attachments/assets/687119e2-cf06-4bbc-9e74-b93f97647cc9)
 
-
-## 4. Identify the most popular cuisine in each Country.
+# Advanced
+## What are the top cuisines in each country based on the number of restaurants offering them?
+*Showcase potential regional cuisine preferences*
 ```sql
 SELECT *
 FROM(
