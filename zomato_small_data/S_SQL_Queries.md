@@ -3,7 +3,6 @@
 CREATE DATABASE zomato_db;
 ```
 ## Create table in database
-DATASET: path = kagglehub.dataset_download("shrutimehta/zomato-restaurants-data")
 ```sql
 CREATE TABLE zomato (
     restaurant_id INT NOT NULL,
@@ -34,6 +33,7 @@ CREATE TABLE zomato (
 
 # Easy
 ## 1. Total registered restaurants in the data
+*Gauges the dataset coverage for analysis*
 ```sql
 SELECT
   COUNT(*) AS nr_of_restaurants
@@ -78,7 +78,8 @@ FROM(
 ![image](https://github.com/user-attachments/assets/87945ff7-bf5d-4498-909c-911f6816c807)
 
 
-## 5. Calculate the average cost for two in each price range for the United States.
+## Calculate the average cost for two in each price range for the United States.
+*Better Understanding of pricing trends by category*
 ```sql
 SELECT 
   CASE 
@@ -95,5 +96,49 @@ ORDER BY 1;
 ```
 ![image](https://github.com/user-attachments/assets/edfb4f4e-5bce-4df2-a484-5ce1ed122e19)
 
+# Super Advanced
+## For countries with table booking services available, which country has the highest average aggregate rating for restaurants offering online delivery?
+*Valuable for targeting countries with high-rated, dual service restauarnts*
+```sql
+WITH table_bookings AS (
+  SELECT *
+  FROM zomato
+  WHERE has_table_booking = 'Yes'
+)
+SELECT 
+  country,
+  ROUND(AVG(aggregate_rating) :: numeric ,2) AS avg_overall_rating
+FROM table_bookings
+WHERE has_online_delivery = 'Yes'
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
+```
+![image](https://github.com/user-attachments/assets/61d71ede-6827-4b5d-8157-d5be0260ba89)
+
+# Expert level
+## Identify cities where restaurants with table booking have significantly higher average ratings compared to those without table booking. Calculate the percentage difference for each city.
+*Highlights the impact of table booking services on customer satisfaction*
+```sql
+WITH avg_rt_compare AS(
+SELECT 
+ city,
+ ROUND(AVG(CASE WHEN has_table_booking = 'Yes' THEN aggregate_rating END):: numeric,2) AS avg_has_tb_rating,
+ ROUND(AVG(CASE WHEN has_table_booking = 'No' THEN aggregate_rating END) :: numeric,2) AS avg_no_tb_rating
+FROM zomato
+GROUP BY 1
+)
+SELECT 
+ city, 
+ avg_has_tb_rating,  
+ avg_no_tb_rating, 
+ ROUND(((avg_has_tb_rating - avg_no_tb_rating) / avg_no_tb_rating) * 100, 2) AS percentage_difference 
+FROM avg_rt_compare
+WHERE avg_has_tb_rating IS NOT NULL 
+ AND avg_no_tb_rating IS NOT NULL 
+ AND avg_has_tb_rating > avg_no_tb_rating
+ORDER BY 4 DESC;
+```
+![image](https://github.com/user-attachments/assets/a0079ad9-e2a3-4f97-afef-4e73d54abde2)
 
 
