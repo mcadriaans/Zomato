@@ -140,5 +140,5 @@ WHERE avg_has_tb_rating IS NOT NULL
 ORDER BY 4 DESC;
 ```
 ![image](https://github.com/user-attachments/assets/a0079ad9-e2a3-4f97-afef-4e73d54abde2)
-
-
+### 🔍 Observations 
+Noida has the highest percentage difference at 56.25%, indicating that restaurants with table bookings have notably higher average ratings than those without.
